@@ -6,7 +6,7 @@
 /*   By: thperchi <thperchi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/06/12 14:00:53 by thperchi     #+#   ##    ##    #+#       */
-/*   Updated: 2019/06/13 14:17:32 by thperchi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/06/13 16:06:14 by thperchi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,7 @@
 typedef struct		s_lst
 {
 	struct s_lst	*next;
-    char            *line;
+    char            *s;
 }					t_lst;
 
 typedef struct      s_env

@@ -6,7 +6,7 @@
 /*   By: thperchi <thperchi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/06/12 15:52:51 by thperchi     #+#   ##    ##    #+#       */
-/*   Updated: 2019/06/13 14:39:23 by thperchi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/06/13 16:06:40 by thperchi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,7 +26,7 @@ t_lst	*fill(t_lst *lst, int fd)
 	t_lst	*tmp;
 
 	tmp = lst;
-	while ((ret = get_next_line(fd, &lst->line)))
+	while ((ret = get_next_line(fd, &lst->s)))
 	{
 		lst->next = (t_lst *)malloc(sizeof(t_lst));
 		lst = lst->next;
