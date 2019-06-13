@@ -6,7 +6,7 @@
 /*   By: thperchi <thperchi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/06/12 10:46:03 by thperchi     #+#   ##    ##    #+#       */
-/*   Updated: 2019/06/12 15:57:43 by thperchi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/06/13 11:29:45 by thperchi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,6 +24,8 @@ int     mouse_click(int button, int x, int y, t_env *env)
 {
     int     testx;
     int     testy;
+    float   m;
+
     if (button == 1)
     {
         env->co_x = x;
@@ -31,22 +33,25 @@ int     mouse_click(int button, int x, int y, t_env *env)
     }
     if (button == 2)
     {
-        if (x > env->co_x && y > env->co_y)
+        testx = env->co_x;
+        testy = env->co_y;
+        m = ((y - testy)/(x - testx));
+        while (testx++ < x)
         {
-            testx = x - env->co_x;
-            testy = y - env->co_y;
-            ft_putnbr(testx);
-            ft_putchar(' ');
-            ft_putnbr(testy);
-            while (x > env->co_x)
+            testy = (m * testx) + y;
+            mlx_pixel_put(env->ptr, env->win, testx, testy, 0xFFFFFF);
+        }
+/*        if (x > testx && y > testy)
+        {
+            while (x > testx)
             {
-                mlx_pixel_put(env->ptr, env->win, env->co_x++, env->co_y--, 0xFFFFFF);
+                mlx_pixel_put(env->ptr, env->win, testx++, testy--, 0xFFFFFF);
             }
         }
         else
-            while (x < env->co_x)
-                mlx_pixel_put(env->ptr, env->win, env->co_x--, env->co_y, 0xFFFFFF);
-        
+            while (x < testx)
+                mlx_pixel_put(env->ptr, env->win, testx--, testy, 0xFFFFFF);
+*/        
     }
     return (0);
 }
