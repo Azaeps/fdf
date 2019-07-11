@@ -6,7 +6,7 @@
 /*   By: thperchi <thperchi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/06/13 14:48:03 by jominodi     #+#   ##    ##    #+#       */
-/*   Updated: 2019/06/21 05:52:20 by thperchi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/07/11 07:06:06 by thperchi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,7 +51,7 @@ t_env		*index_number(t_lst *lst, t_env *env, int verif, int number)
 	y = 0;
 	beg = lst;
 	tmp = INDEX;
-	while (beg->next && !(x = 0))
+	while (beg->next && !(x = 0) && (y += 1))
 	{
 		i = verif;
 		while (i-- > 0)
@@ -64,7 +64,6 @@ t_env		*index_number(t_lst *lst, t_env *env, int verif, int number)
 			tmp->next = init_index();
 			tmp = tmp->next;
 		}
-		y++;
 		beg = beg->next;
 	}
 	return (env);
@@ -85,7 +84,7 @@ int			check_valid_file(t_lst *lst, int verif, int i, int nbr)
 				i++;
 			nbr++;
 		}
-	//	dprintf(1, "Verif: %d || nbr: %d\n", verif, nbr);
+		//dprintf(1, "Verif: %d || nbr: %d\n", verif, nbr);
 		if (verif == 0)
 			verif = nbr;
 		if (verif != nbr)
@@ -95,7 +94,7 @@ int			check_valid_file(t_lst *lst, int verif, int i, int nbr)
 	return (verif);
 }
 
-t_env			*check(t_lst *lst, int verif, t_env *env)
+t_env		*check(t_lst *lst, int verif, t_env *env)
 {
 	if (!(verif = check_valid_file(lst, verif, 101, 101)))
 	{

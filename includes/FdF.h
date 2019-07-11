@@ -6,7 +6,7 @@
 /*   By: thperchi <thperchi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/06/12 13:35:57 by jominodi     #+#   ##    ##    #+#       */
-/*   Updated: 2019/06/18 00:07:03 by thperchi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/07/11 02:27:11 by thperchi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,6 +40,12 @@ typedef struct      s_index
 typedef struct      s_env
 {
 	t_index			*index;
+	int				x1;
+	int				y1;
+	int				x2;
+	int				y2;
+	int				tmp;
+	int				yy;
 	void            *ptr;
 	void            *win;
 }                   t_env;
@@ -54,5 +60,6 @@ t_env				*init_env(void);
 t_lst				*init_lst(void);
 void 				error(void);
 int     			aff(t_env *env);
+int					test(int button, int x, int y, t_env *env);
 
 #endif

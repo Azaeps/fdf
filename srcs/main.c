@@ -6,7 +6,7 @@
 /*   By: thperchi <thperchi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/06/12 11:35:50 by jominodi     #+#   ##    ##    #+#       */
-/*   Updated: 2019/06/18 00:07:26 by thperchi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/07/11 07:02:21 by thperchi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,12 +15,12 @@
 
 t_lst	*fill(t_lst *lst, int fd)
 {
-	int     ret;
-	t_lst   *tmp;
-	char    *line;
+	int		ret;
+	t_lst	*tmp;
+	char	*line;
 
 	tmp = lst;
-	 while ((ret = get_next_line(fd, &line) > 0))
+	while ((ret = get_next_line(fd, &line) > 0))
 	{
 		lst->s = line;
 		lst->next = init_lst();
@@ -31,9 +31,9 @@ t_lst	*fill(t_lst *lst, int fd)
 
 int		main(int ac, char **av)
 {
-	t_lst   *lst;
-	int     fd;
-	t_env   *env;
+	t_lst	*lst;
+	int		fd;
+	t_env	*env;
 
 	env = init_env();
 	if (ac != 2)
@@ -49,6 +49,7 @@ int		main(int ac, char **av)
 	env->ptr = mlx_init();
 	env->win = mlx_new_window(env->ptr, 800, 800, "test");
 	aff(env);
+	mlx_mouse_hook(env->win, test, env);
 	mlx_loop(env->ptr);
 	free_list(lst);
 	free_env(env);

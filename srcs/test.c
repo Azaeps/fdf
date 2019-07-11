@@ -1,54 +1,43 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   free.c                                           .::    .:/ .      .::   */
+/*   test.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: thperchi <thperchi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/05/07 13:37:27 by jominodi     #+#   ##    ##    #+#       */
-/*   Updated: 2019/07/11 07:01:17 by thperchi    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/07/09 01:25:25 by thperchi     #+#   ##    ##    #+#       */
+/*   Updated: 2019/07/11 07:03:08 by thperchi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/FdF.h"
 
-void		error(void)
+int		test(int button, int x, int y, t_env *env)
 {
-	ft_putstr("error\n");
-	exit(1);
-}
+	float dx;
+	float dy;
+	float m;
+	float a;
 
-t_index		*free_index(t_index *index)
-{
-	if (index)
-		free_index(index->next);
-	if (index)
+	if (button == 1)
 	{
-		index->next = NULL;
-		free(index);
+		env->x1 = x;
+		env->y1 = y;
 	}
-	return (NULL);
-}
-
-t_env		*free_env(t_env *env)
-{
-	if (INDEX)
-		free_index(INDEX);
-//	free(env->ptr);
-//	free(env->win);
-	free(env);
-	return (NULL);
-}
-
-t_lst		*free_list(t_lst *list)
-{
-	if (list->next)
-		free_list(list->next);
-	if (list)
+	if (button == 2)
 	{
-		free(list->s);
-		free(list);
+		env->x2 = x;
+		env->y2 = y;
+		dx = abs(env->x2 - env->x1);
+		dy = abs(env->y2 - env->y1);
+		m = dy / dx;
+		env->tmp = env->x1;
+		while (env->tmp++ < env->x2)
+		{
+			a = m * (env->tmp - env->x1) + env->y1 + 0.5;
+			mlx_pixel_put(env->ptr, env->win, env->tmp, a, 0xFFFF00);
+		}
 	}
-	return (NULL);
+	return (0);
 }
